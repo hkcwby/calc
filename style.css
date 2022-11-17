@@ -8,7 +8,7 @@ body{
 
 #calc-frame {
     display:flex;
-    justify-content: space-evenly; 
+    justify-content:flex-start; 
     align-items:center;
     flex-direction: column;
     background-color: rgb(72, 72, 72);
@@ -18,9 +18,8 @@ body{
 
 #outer-display-border{
     display:flex;
-    justify-content: space-evenly; 
+    justify-content: center;
     align-items:center;
-    flex-direction: column;
     background-color: rgb(141, 135, 135);
     height: 80px;
     width: 280px;
@@ -30,17 +29,21 @@ body{
 
 #inner-display-border{
     display:flex;
+    justify-content: center;
+    align-items:center;
     background-color: rgb(174, 160, 160);
     height: 40px;
-    width: 80px;
+    width: 240px;
     
 }
 
 #display{
-    display:flex;
-    background-color: rgb(174, 160, 160);
-    height: 40px;
-    width: 80px;
+    background-color: rgb(148, 180, 148);
+    height: 30px;
+    width: 200px;
+    border-radius: 10px 10px 10px 10px;
+    text-align: right;
+    vertical-align: bottom;
     
 }
 
@@ -80,4 +83,37 @@ button{
     height:45px;
     color:white;
     font-weight: bold;
+}
+
+#func-button-green{
+    border-radius: 100%;
+    width:20px;
+    height:20px;
+    background-color: green;
+}
+
+#func-button-red{
+    border-radius: 100%;
+    width:20px;
+    height:20px;
+    background-color: red;
+}
+
+#brand-label{
+    
+    color:white;
+    align-self: flex-start;
+    margin:54px 0px 10px 40px;
+
+}
+
+#function-buttons{
+    align-self: flex-start;
+    margin:54px 0px 10px 40px;
+    display:flex;
+    gap:20px;
+
+}
+b{
+    font-size: 24;
 }
