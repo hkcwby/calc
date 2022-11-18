@@ -11,7 +11,7 @@ body{
     justify-content:flex-start; 
     align-items:center;
     flex-direction: column;
-    background-color: rgb(72, 72, 72);
+    background-color: #252429;
     height: 640px;
     width: 360px;
 }
@@ -20,7 +20,7 @@ body{
     display:flex;
     justify-content: center;
     align-items:center;
-    background-color: rgb(141, 135, 135);
+    background-color: #202020;
     height: 80px;
     width: 280px;
 
@@ -31,7 +31,7 @@ body{
     display:flex;
     justify-content: center;
     align-items:center;
-    background-color: rgb(174, 160, 160);
+    background-color: #c8cabc;
     height: 40px;
     width: 240px;
     
@@ -61,20 +61,20 @@ body{
 }
 
 .action{
-    background-color: rgb(139, 37, 37);
+    background-color: #371e16;
 }
 
 .number{
-    background-color:black;
+    background-color:#06050a;
 }
 
 .equals{
-    background-color: rgb(255, 206, 27);
+    background-color: #da9a40;
     color:black;
 }
 
 .memory{
-    background-color:rgb(13, 83, 13);
+    background-color:#2a3e35;
 }
 
 button{
@@ -83,20 +83,21 @@ button{
     height:45px;
     color:white;
     font-weight: bold;
+    border:0;
 }
 
 #func-button-green{
     border-radius: 100%;
     width:20px;
     height:20px;
-    background-color: green;
+    background-color: #2a3e35;
 }
 
 #func-button-red{
     border-radius: 100%;
     width:20px;
     height:20px;
-    background-color: red;
+    background-color: #cc1b10;
 }
 
 #brand-label{
