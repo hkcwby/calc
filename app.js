@@ -12,7 +12,6 @@ let display = document.querySelector("#display-value");
 //creating a click animation to be used on all buttons and provide the user feedback
 function animate(e){
   e.target.classList.add("clicked");
-  console.log(e.target.classList);
   setTimeout(() => {
       e.target.classList.remove("clicked");
     }, "100")
@@ -63,10 +62,6 @@ function entry(e){
   //if in decimal mode we must add values in a slightly more laborious manner that imitates a physical calculator display
   if(decimal){
     decimalValue=decimalValue.concat(String(e.target.innerHTML));
-  
-    console.log(decimalValue);
-    console.log(String(currentDisplayValue).concat(".",decimalValue))
-
     currentDisplayValue = Number(String(integerValue).concat(".",decimalValue));
     display.innerHTML=String(integerValue).concat(".",decimalValue);
 
@@ -85,5 +80,22 @@ function operate(e){
   animate(e);
   operation = e.target.innerHTML;
 
+}
+
+function signSetting(e){
+  //animate the click for user feedback
+  animate(e);
+
+  if(integerValue) integerValue=integerValue*-1;
+  console.log(integerValue);
+
+  if(decimal){
+    currentDisplayValue = Number(String(integerValue).concat(".",decimalValue));
+    display.innerHTML=String(integerValue).concat(".",decimalValue);
+  }
+  else{
+    currentDisplayValue=integerValue;
+    display.innerHTML=String(currentDisplayValue);
+  }
 }
 
