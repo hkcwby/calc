@@ -1,9 +1,10 @@
-let currentDisplayValue = 0;
+let currentDisplayValue = "0";
 let storedNumber = null;
-let secondNumber = null;
+let otherNumber = null;
 let decimal = false;
 let integerValue = 0;
 let decimalValue = "";
+let cleared = false;
 let display = document.querySelector("#display-value");
 //main function for clicks
 function onCalcButtonClick(e) {
@@ -16,17 +17,36 @@ function decimalToggle(e) {
     animate(e);
     decimal = true;
 }
+function clearing(e) {
+    console.log("triggered");
+    animate(e);
+    if (!cleared) {
+        currentDisplayValue = 0;
+        display.innerHTML = currentDisplayValue;
+        integerValue = 0;
+        decimalValue = "";
+        decimal = false;
+        cleared = true;
+    } else {
+        integerValue = 0;
+        decimalValue = "";
+        decimal = false;
+        cleared = true;
+        otherNumber = null;
+        storedNumber = null;
+    }
+}
 function entry(e) {
     if (decimal) {
         decimalValue = decimalValue.concat(String(e.target.innerHTML));
         console.log(decimalValue);
         console.log(String(currentDisplayValue).concat(".", decimalValue));
         currentDisplayValue = Number(String(integerValue).concat(".", decimalValue));
-        display.innerHTML = currentDisplayValue;
+        display.innerHTML = String(integerValue).concat(".", decimalValue);
     } else {
         integerValue = integerValue * 10 + Number(e.target.innerHTML);
         currentDisplayValue = integerValue;
-        display.innerHTML = currentDisplayValue;
+        display.innerHTML = String(currentDisplayValue);
     }
 }
 //creating a click animation for the item
