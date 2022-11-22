@@ -60,7 +60,16 @@ function entry(e) {
 function operate(e) {
     //animate the click for user feedback
     animate(e);
+    //store the desired operation
     operation = e.target.innerHTML;
+    //store the first number in the operation
+    otherNumber = currentDisplayValue;
+    //reset the values
+    cleared = false;
+    integerValue = 0;
+    decimalValue = "";
+    currentDisplayValue = 0;
+    display.innerHTML = String(currentDisplayValue);
 }
 function signSetting(e) {
     //animate the click for user feedback
@@ -74,6 +83,20 @@ function signSetting(e) {
         currentDisplayValue = integerValue;
         display.innerHTML = String(currentDisplayValue);
     }
+}
+function calculate(firstValue, secondValue, operationValue) {
+    let output = 0;
+    switch(operationValue){
+        case "+":
+            output = firstValue + secondValue;
+        case "-":
+            output = firstValue - secondValue;
+        case "&#247":
+            output = firstValue / secondValue;
+        case "&#215":
+            output = firstValue * secondValue;
+    }
+    return output;
 }
 
 //# sourceMappingURL=index.7bf601fc.js.map
