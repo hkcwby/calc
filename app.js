@@ -2,6 +2,7 @@ let currentDisplayValue = 0;
 let storedNumber = null;
 let secondNumber = null;
 let decimal = false;
+let integerValue = 0;
 let decimalValue = "";
 
 let display = document.querySelector("#display-value");
@@ -26,13 +27,15 @@ function entry(e){
     decimalValue=decimalValue.concat(String(e.target.innerHTML));
   
     console.log(decimalValue);
-    console.log(Number(decimalValue)/(10^decimalValue.length));
-    currentDisplayValue = currentDisplayValue + (Number(decimalValue)/(10^decimalValue.length));
+    console.log(String(currentDisplayValue).concat(".",decimalValue))
+
+    currentDisplayValue = Number(String(integerValue).concat(".",decimalValue));
     display.innerHTML=currentDisplayValue;
 
   }
   else{
-    currentDisplayValue = (currentDisplayValue*10) + Number(e.target.innerHTML);
+    integerValue = (integerValue*10) + Number(e.target.innerHTML);
+    currentDisplayValue=integerValue;
     display.innerHTML=currentDisplayValue;
   }
 }
