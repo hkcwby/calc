@@ -5,27 +5,32 @@ let decimal = false;
 let integerValue = 0;
 let decimalValue = "";
 let cleared = false;
+let operation = "";
 
 let display = document.querySelector("#display-value");
 
-//main function for clicks
-function onCalcButtonClick(e){
-  //run animation
-  animate(e);
-  //run function to determine action
-  entry(e);
-    
+//creating a click animation to be used on all buttons and provide the user feedback
+function animate(e){
+  e.target.classList.add("clicked");
+  console.log(e.target.classList);
+  setTimeout(() => {
+      e.target.classList.remove("clicked");
+    }, "100")
 }
 
+
+//function for toggling to decimal place mode.
 function decimalToggle(e){
   animate(e);
   decimal = true;
 }
 
-function clearing(e){
-  console.log("triggered");
-  animate(e);
+//function for clearing present values or to clear the full memory on a double tap.
 
+function clearing(e){
+  //animate the click for user feedback
+  animate(e);
+  //if this is the first press just clear current values
   if(!cleared){
     currentDisplayValue=0;
     display.innerHTML=currentDisplayValue;
@@ -34,6 +39,7 @@ function clearing(e){
     decimal=false;
     cleared=true;
   }
+  //if its the second press reset all the stored memory
   else{
     integerValue=0;
     decimalValue="";
@@ -41,7 +47,7 @@ function clearing(e){
     cleared=true;
     otherNumber=null;
     storedNumber=null;
-
+    operation="";
   }
 
 
@@ -49,6 +55,12 @@ function clearing(e){
 
 
 function entry(e){
+  //animate the click for user feedback
+  animate(e);
+
+  //if the cleared button has been pressed once it needs to be reset
+  cleared = false;
+  //if in decimal mode we must add values in a slightly more laborious manner that imitates a physical calculator display
   if(decimal){
     decimalValue=decimalValue.concat(String(e.target.innerHTML));
   
@@ -59,19 +71,19 @@ function entry(e){
     display.innerHTML=String(integerValue).concat(".",decimalValue);
 
   }
+  //otherwise its a simple operation of just adding on the next number
   else{
     integerValue = (integerValue*10) + Number(e.target.innerHTML);
     currentDisplayValue=integerValue;
     display.innerHTML=String(currentDisplayValue);
   }
 }
-//creating a click animation for the item
-function animate(e){
-  e.target.classList.add("clicked");
-  console.log(e.target.classList);
-  setTimeout(() => {
-      e.target.classList.remove("clicked");
-    }, "100")
 
+
+function operate(e){
+  //animate the click for user feedback
+  animate(e);
+  operation = e.target.innerHTML;
 
 }
+
