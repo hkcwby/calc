@@ -1,6 +1,6 @@
 let currentDisplayValue = "0";
-let storedNumber = null;
-let otherNumber = null;
+let storedNumber = 0;
+let otherNumber = 0;
 let decimal = false;
 let integerValue = 0;
 let decimalValue = "";
@@ -89,6 +89,8 @@ function operate(e){
   currentDisplayValue=0;
   display.innerHTML=String(currentDisplayValue);
 
+  console.log(otherNumber);
+
 }
 
 function signSetting(e){
@@ -116,9 +118,23 @@ function calculate(firstValue,secondValue,operationValue){
     case "-": output = firstValue - secondValue;
     case "&#247": output = firstValue / secondValue;
     case "&#215": output = firstValue * secondValue;
-
+    case "&#916%": output = ((firstValue - secondValue)/secondValue)*100;
+    case "%": output = firstValue * (1*(secondValue/100));
   }
 
   return output;
+
+}
+
+function equals(e){
+  //animate the click for user feedback
+  animate(e);
+  console.log(otherNumber,currentDisplayValue,operation);
+
+  if(otherNumber && operation){
+    currentDisplayValue = calculate(otherNumber,currentDisplayValue,operation);
+    display.innerHTML=String(currentDisplayValue);
+    otherNumber = null;
+  }
 
 }
