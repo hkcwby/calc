@@ -90,16 +90,22 @@ function calculate(firstValue, secondValue, operationValue) {
     switch(operationValue){
         case "+":
             output = firstValue + secondValue;
+            break;
         case "-":
             output = firstValue - secondValue;
-        case "&#247":
+            break;
+        case "\xf7":
             output = firstValue / secondValue;
-        case "&#215":
+            break;
+        case "\xd7":
             output = firstValue * secondValue;
-        case "&#916%":
+            break;
+        case "Δ%":
             output = (firstValue - secondValue) / secondValue * 100;
+            break;
         case "%":
             output = firstValue * (1 * (secondValue / 100));
+            break;
     }
     return output;
 }

@@ -114,12 +114,24 @@ function signSetting(e){
 function calculate(firstValue,secondValue,operationValue){
   let output = 0; 
   switch(operationValue){
-    case "+": output = firstValue + secondValue;
-    case "-": output = firstValue - secondValue;
-    case "&#247": output = firstValue / secondValue;
-    case "&#215": output = firstValue * secondValue;
-    case "&#916%": output = ((firstValue - secondValue)/secondValue)*100;
-    case "%": output = firstValue * (1*(secondValue/100));
+    case "+": 
+      output = firstValue + secondValue;
+      break;
+    case "-": 
+      output = firstValue - secondValue;
+      break;
+    case "÷": 
+      output = firstValue / secondValue;
+      break;
+    case "×": 
+      output = firstValue * secondValue;
+      break;
+    case "Δ%": 
+      output = ((firstValue - secondValue)/secondValue)*100;
+      break;
+    case "%": 
+      output = firstValue * (1*(secondValue/100));
+      break;
   }
 
   return output;
