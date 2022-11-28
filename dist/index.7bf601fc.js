@@ -1,6 +1,7 @@
 let currentDisplayValue = "0";
 let storedNumber = null;
 let otherNumber = 0;
+let otherNumberDecimalLength = 0;
 let decimal = false;
 let integerValue = 0;
 let decimalValue = "";
@@ -37,6 +38,7 @@ function clearing(e) {
         decimal = false;
         cleared = true;
         otherNumber = null;
+        otherNumberDecimalLength = 0;
         storedNumber = null;
         operation = "";
     }
@@ -64,6 +66,7 @@ function operate(e) {
     operation = e.target.innerHTML;
     //store the first number in the operation
     otherNumber = currentDisplayValue;
+    otherNumberDecimalLength = String(decimalValue).length;
     //reset the values
     cleared = false;
     integerValue = 0;
@@ -71,18 +74,17 @@ function operate(e) {
     decimalValue = "";
     currentDisplayValue = 0;
     display.innerHTML = String(currentDisplayValue);
-    console.log(otherNumber);
 }
 function signSetting(e) {
     //animate the click for user feedback
     animate(e);
-    if (integerValue) integerValue = integerValue * -1;
-    console.log(integerValue);
     if (decimal) {
+        integerValue = integerValue * -1;
         currentDisplayValue = Number(String(integerValue).concat(".", decimalValue));
         display.innerHTML = String(integerValue).concat(".", decimalValue);
+        console.log("decimal");
     } else {
-        currentDisplayValue = integerValue;
+        currentDisplayValue = currentDisplayValue * -1;
         display.innerHTML = String(currentDisplayValue);
     }
 }
@@ -118,11 +120,14 @@ function calculate(firstValue, secondValue, operationValue) {
 function equals(e) {
     //animate the click for user feedback
     animate(e);
-    console.log(otherNumber, currentDisplayValue, operation);
     if (otherNumber && operation) {
-        currentDisplayValue = calculate(otherNumber, currentDisplayValue, operation);
+        currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(Math.max(String(decimalValue).length, otherNumberDecimalLength)));
         display.innerHTML = String(currentDisplayValue);
         otherNumber = null;
+        otherNumberDecimalLength = 0;
+        decimal = false;
+        decimalValue = 0;
+        integerValue = 0;
     }
 }
 function memPlus(e) {
