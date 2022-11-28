@@ -27,10 +27,10 @@
             <button id="func-button-red"></button>
         </div>
         <div id="calc-buttons">
-            <button class="memory">M+</button>
-            <button class="memory">M-</button>
-            <button class="memory">MR</button>
-            <button class="memory">MC</button>
+            <button class="memory" onclick="memPlus(event)">M+</button>
+            <button class="memory" onclick="memMinus(event)">M-</button>
+            <button class="memory" onclick="memRecall(event)">MR</button>
+            <button class="memory" onclick="memClear(event)">MC</button>
             <button class="memory" onclick="signSetting(event)">+/-</button>
             <button class="action" onclick="operate(event)">&#916%</button>
             <button class="number" onclick="entry(event)">7</button>

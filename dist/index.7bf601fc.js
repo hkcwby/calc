@@ -1,5 +1,5 @@
 let currentDisplayValue = "0";
-let storedNumber = 0;
+let storedNumber = null;
 let otherNumber = 0;
 let decimal = false;
 let integerValue = 0;
@@ -67,6 +67,7 @@ function operate(e) {
     //reset the values
     cleared = false;
     integerValue = 0;
+    decimal = false;
     decimalValue = "";
     currentDisplayValue = 0;
     display.innerHTML = String(currentDisplayValue);
@@ -87,7 +88,6 @@ function signSetting(e) {
 }
 function squareRoot(e) {
     animate(e);
-    console.log("triggered");
     currentDisplayValue = Math.sqrt(currentDisplayValue);
     display.innerHTML = String(currentDisplayValue);
 }
@@ -124,6 +124,22 @@ function equals(e) {
         display.innerHTML = String(currentDisplayValue);
         otherNumber = null;
     }
+}
+function memPlus(e) {
+    storedNumber += currentDisplayValue;
+}
+function memMinus(e) {
+    animate(e);
+    storedNumber -= currentDisplayValue;
+}
+function memClear(e) {
+    animate(e);
+    storedNumber = 0;
+}
+function memRecall(e) {
+    animate(e);
+    currentDisplayValue = storedNumber;
+    display.innerHTML = String(currentDisplayValue);
 }
 
 //# sourceMappingURL=index.7bf601fc.js.map
