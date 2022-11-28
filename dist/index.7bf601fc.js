@@ -122,7 +122,7 @@ function equals(e) {
     animate(e);
     if (otherNumber && operation) {
         //slightly complicated process to resolve floating point mathematics issues in Javascript
-        currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(Math.max(String(decimalValue).length, otherNumberDecimalLength)));
+        currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(Math.max(String(decimalValue).length, otherNumberDecimalLength) + 8));
         display.innerHTML = String(currentDisplayValue);
         otherNumber = null;
         otherNumberDecimalLength = 0;
