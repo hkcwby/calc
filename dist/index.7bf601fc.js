@@ -1,5 +1,5 @@
 let currentDisplayValue = "0";
-let storedNumber = null;
+let storedNumber = 0;
 let otherNumber = 0;
 let otherNumberDecimalLength = 0;
 let decimal = false;
@@ -36,10 +36,10 @@ function clearing(e) {
         integerValue = 0;
         decimalValue = "";
         decimal = false;
-        cleared = true;
+        cleared = false;
         otherNumber = null;
         otherNumberDecimalLength = 0;
-        storedNumber = null;
+        storedNumber = 0;
         operation = "";
     }
 }
@@ -121,6 +121,7 @@ function equals(e) {
     //animate the click for user feedback
     animate(e);
     if (otherNumber && operation) {
+        //slightly complicated process to resolve floating point mathematics issues in Javascript
         currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(Math.max(String(decimalValue).length, otherNumberDecimalLength)));
         display.innerHTML = String(currentDisplayValue);
         otherNumber = null;
@@ -131,18 +132,23 @@ function equals(e) {
     }
 }
 function memPlus(e) {
+    animate(e);
+    cleared = false;
     storedNumber += currentDisplayValue;
 }
 function memMinus(e) {
     animate(e);
+    cleared = false;
     storedNumber -= currentDisplayValue;
 }
 function memClear(e) {
     animate(e);
+    cleared = false;
     storedNumber = 0;
 }
 function memRecall(e) {
     animate(e);
+    cleared = false;
     currentDisplayValue = storedNumber;
     display.innerHTML = String(currentDisplayValue);
 }
