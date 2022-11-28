@@ -85,6 +85,12 @@ function signSetting(e) {
         display.innerHTML = String(currentDisplayValue);
     }
 }
+function squareRoot(e) {
+    animate(e);
+    console.log("triggered");
+    currentDisplayValue = Math.sqrt(currentDisplayValue);
+    display.innerHTML = String(currentDisplayValue);
+}
 function calculate(firstValue, secondValue, operationValue) {
     let output = 0;
     switch(operationValue){

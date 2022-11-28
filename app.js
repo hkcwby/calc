@@ -110,6 +110,16 @@ function signSetting(e){
   }
 }
 
+function squareRoot(e){
+  animate(e);
+  console.log("triggered");
+  currentDisplayValue= Math.sqrt(currentDisplayValue);
+    display.innerHTML=String(currentDisplayValue);
+
+
+
+}
+
 
 function calculate(firstValue,secondValue,operationValue){
   let output = 0; 
