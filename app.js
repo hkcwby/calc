@@ -105,7 +105,6 @@ function signSetting(e){
     integerValue=integerValue*-1;
     currentDisplayValue = Number(String(integerValue).concat(".",decimalValue));
     display.innerHTML=String(integerValue).concat(".",decimalValue);
-    console.log("decimal")
   }
   else{
     currentDisplayValue=currentDisplayValue*-1;
@@ -157,7 +156,7 @@ function equals(e){
 
   if(otherNumber && operation){
     //slightly complicated process to resolve floating point mathematics issues in Javascript
-    currentDisplayValue = Number(calculate(otherNumber,currentDisplayValue,operation).toFixed(Math.max(String(decimalValue).length,otherNumberDecimalLength)+8));
+    currentDisplayValue = Number(calculate(otherNumber,currentDisplayValue,operation).toFixed(Math.max(String(decimalValue).length,otherNumberDecimalLength)+4));
     display.innerHTML=String(currentDisplayValue);
     otherNumber = null;
     otherNumberDecimalLength = 0;
