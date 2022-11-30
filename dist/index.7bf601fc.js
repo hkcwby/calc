@@ -8,6 +8,15 @@ let decimalValue = "";
 let cleared = false;
 let operation = "";
 let display = document.querySelector("#display-value");
+function powerOn(e) {
+    animate(e);
+    display.classList.remove("off");
+}
+function powerOff(e) {
+    clearing(e);
+    clearing(e);
+    display.classList.add("off");
+}
 //creating a click animation to be used on all buttons and provide the user feedback
 function animate(e) {
     e.target.classList.add("clicked");

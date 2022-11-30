@@ -55,6 +55,9 @@ body{
     justify-content: space-evenly;
     width: 300;
 }
+.off{
+    visibility: hidden;
+}
 
 .smaller{
     font-size: 0.5em;
