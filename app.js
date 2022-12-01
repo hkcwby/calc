@@ -55,9 +55,9 @@ function clearing(e){
   }
   //if its the second press reset all the stored memory
   else{
-    integerValue=0;
-    decimalValue="";
-    decimal=false;
+    // integerValue=0;
+    // decimalValue="";
+    // decimal=false;
     cleared=false;
     otherNumber=null;
     otherNumberDecimalLength=0;

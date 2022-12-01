@@ -41,9 +41,9 @@ function clearing(e) {
         decimal = false;
         cleared = true;
     } else {
-        integerValue = 0;
-        decimalValue = "";
-        decimal = false;
+        // integerValue=0;
+        // decimalValue="";
+        // decimal=false;
         cleared = false;
         otherNumber = null;
         otherNumberDecimalLength = 0;
