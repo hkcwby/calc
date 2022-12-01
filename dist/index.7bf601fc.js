@@ -1,7 +1,6 @@
 let currentDisplayValue = "0";
 let storedNumber = 0;
 let otherNumber = 0;
-let otherNumberDecimalLength = 0;
 let decimal = false;
 let integerValue = 0;
 let decimalValue = "";
@@ -41,12 +40,8 @@ function clearing(e) {
         decimal = false;
         cleared = true;
     } else {
-        // integerValue=0;
-        // decimalValue="";
-        // decimal=false;
         cleared = false;
         otherNumber = null;
-        otherNumberDecimalLength = 0;
         storedNumber = 0;
         operation = "";
     }
@@ -70,7 +65,6 @@ function operate(e) {
     operation = e.target.innerHTML;
     //store the first number in the operation
     otherNumber = currentDisplayValue;
-    otherNumberDecimalLength = String(decimalValue).length;
     //reset the values
     cleared = false;
     integerValue = 0;
@@ -119,11 +113,10 @@ function calculate(firstValue, secondValue, operationValue) {
 }
 function equals(e) {
     if (otherNumber && operation) {
-        //slightly complicated process to resolve floating point mathematics issues in Javascript
-        currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(Math.max(String(decimalValue).length, otherNumberDecimalLength) + 4));
+        //performing calculation and rounding using "toFixed" to remove javascript floating point calc artifacts
+        currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(7));
         display.innerHTML = String(currentDisplayValue);
         otherNumber = null;
-        otherNumberDecimalLength = 0;
         decimal = false;
         decimalValue = 0;
         integerValue = 0;
