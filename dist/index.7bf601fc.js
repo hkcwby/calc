@@ -8,15 +8,6 @@ let decimalValue = "";
 let cleared = false;
 let operation = "";
 let display = document.querySelector("#display-value");
-function powerOn(e) {
-    animate(e);
-    display.classList.remove("off");
-}
-function powerOff(e) {
-    clearing(e);
-    clearing(e);
-    display.classList.add("off");
-}
 //creating a click animation to be used on all buttons and provide the user feedback
 function animate(e) {
     e.target.classList.add("clicked");
@@ -24,15 +15,23 @@ function animate(e) {
         e.target.classList.remove("clicked");
     }, "100");
 }
+//adding animate function directly to each button
+let myButtons = document.querySelectorAll("button");
+myButtons.forEach((item)=>item.addEventListener("click", (e)=>animate(e)));
+function powerOn(e) {
+    display.classList.remove("off");
+}
+function powerOff(e) {
+    clearing(e);
+    clearing(e);
+    display.classList.add("off");
+}
 //function for toggling to decimal place mode.
 function decimalToggle(e) {
-    animate(e);
     decimal = true;
 }
 //function for clearing present values or to clear the full memory on a double tap.
 function clearing(e) {
-    //animate the click for user feedback
-    animate(e);
     //if this is the first press just clear current values
     if (!cleared) {
         currentDisplayValue = 0;
@@ -53,8 +52,6 @@ function clearing(e) {
     }
 }
 function entry(e) {
-    //animate the click for user feedback
-    animate(e);
     //if the cleared button has been pressed once it needs to be reset
     cleared = false;
     //if in decimal mode we must add values in a slightly more laborious manner that imitates a physical calculator display
@@ -69,8 +66,6 @@ function entry(e) {
     }
 }
 function operate(e) {
-    //animate the click for user feedback
-    animate(e);
     //store the desired operation
     operation = e.target.innerHTML;
     //store the first number in the operation
@@ -85,8 +80,6 @@ function operate(e) {
     display.innerHTML = String(currentDisplayValue);
 }
 function signSetting(e) {
-    //animate the click for user feedback
-    animate(e);
     if (decimal) {
         integerValue = integerValue * -1;
         currentDisplayValue = Number(String(integerValue).concat(".", decimalValue));
@@ -97,7 +90,6 @@ function signSetting(e) {
     }
 }
 function squareRoot(e) {
-    animate(e);
     currentDisplayValue = Math.sqrt(currentDisplayValue);
     display.innerHTML = String(currentDisplayValue);
 }
@@ -126,8 +118,6 @@ function calculate(firstValue, secondValue, operationValue) {
     return output;
 }
 function equals(e) {
-    //animate the click for user feedback
-    animate(e);
     if (otherNumber && operation) {
         //slightly complicated process to resolve floating point mathematics issues in Javascript
         currentDisplayValue = Number(calculate(otherNumber, currentDisplayValue, operation).toFixed(Math.max(String(decimalValue).length, otherNumberDecimalLength) + 4));
@@ -140,22 +130,18 @@ function equals(e) {
     }
 }
 function memPlus(e) {
-    animate(e);
     cleared = false;
     storedNumber += currentDisplayValue;
 }
 function memMinus(e) {
-    animate(e);
     cleared = false;
     storedNumber -= currentDisplayValue;
 }
 function memClear(e) {
-    animate(e);
     cleared = false;
     storedNumber = 0;
 }
 function memRecall(e) {
-    animate(e);
     cleared = false;
     currentDisplayValue = storedNumber;
     display.innerHTML = String(currentDisplayValue);
