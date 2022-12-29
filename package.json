@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hkcwby/calc/issues"
   },
-  "homepage": "https://github.com/hkcwby/calc#readme"
+  "homepage": "https://github.com/hkcwby/calc#readme",
+  "devDependencies": {
+    "prettier": "2.8.1"
+  }
 }
